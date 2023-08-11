@@ -1,8 +1,3 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 ul {
   list-style-type: none;
   padding: 0;
@@ -26,27 +21,14 @@ a {
   min-height: 620px;
 }
 /* HEADER==================================================== */
-.header {
-  background-color: transparent;
-  transition: background-color 0.3s linear 0s;
-  z-index: 110;
-  min-height: 80px;
-}
-.navbar {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: -100%;
-  left: 0;
-  transition: top 0.3s ease 0s;
-}
-body._lock .navbar {
-  top: 0;
-}
 .nav-link {
   color: #fff;
   font-size: 24px;
   transition: color 0.3s ease 0s;
+}
+.nav-link.active {
+  color: #fff !important;
+  text-decoration: underline;
 }
 .link:hover {
   color: #fff;
@@ -90,18 +72,20 @@ body._lock .navbar {
 .navbar-toggler.collapsed span:nth-child(3) {
   opacity: 1;
 }
-.navbar-bg {
-  background-color: #000;
-}
 .navbar-collapse {
+  position: fixed;
+  top: -100%;
+  left: 0;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+  background-color: #000;
+  height: 100%;
+  width: 100%;
+  height: 100vh !important;
 }
 .navbar-collapse.show {
   opacity: 1;
-}
-.navbar-bg .navbar-collapse {
-  height: 100vh !important;
+  top: 0;
 }
 /* TITLES ==================================================== */
 .curved-title {
@@ -469,7 +453,7 @@ body._lock .navbar {
   }
 }
 @media (max-width: 992px) {
-  .navbar {
+  .navbar-collapse {
     overflow-y: scroll;
   }
   .header-title {
@@ -486,7 +470,6 @@ body._lock .navbar {
   }
   .bx-viewport,
   .container-custom {
-    /* height: 90vh; */
     min-height: 580px;
   }
   .nav-link {
